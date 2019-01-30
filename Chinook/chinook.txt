@@ -1,0 +1,48 @@
+Récupérer tous les albums :
+    SELECT * FROM albums;
+
+Récupérer tous les albums dont le titre contient "Great" (indice) :
+    SELECT * FROM albums WHERE Title LIKE '%great%';
+
+Donner le nombre total d'albums contenus dans la base (sans regarder les id bien sûr) :
+    SELECT COUNT(AlbumId) FROM albums;
+
+Supprimer tous les albums dont le nom contient "music" :
+    DELETE FROM albums WHERE Title LIKE '%music%'
+
+Récupérer tous les albums écrits par AC/DC :
+    SELECT Title FROM albums WHERE ArtistId = 1;
+
+    SELECT Title FROM albums WHERE AlbumId IN (1, 4);
+
+    SELECT Title FROM albums WHERE ArtistId IN (SELECT ArtistId FROM artists WHERE Name = 'AC/DC'); 
+
+
+Récupérer tous les titres des albums de AC/DC :
+    SELECT tracks.Name FROM tracks
+    JOIN albums ON albums.AlbumId = tracks.AlbumID
+    JOIN artists ON artists.ArtistId = albums.ArtistId
+    WHERE artists.Name = 'AC/DC';
+
+    SELECT Name FROM tracks INNER JOIN albums INNER JOIN artists ON tracks.AlbumId = albums.AlbumId = albums.ArtistId = artists.ArtistId WHERE artists.Name = ‘AC/DC’;
+
+Récupérer la liste des titres de l'album "There Be Rock" :
+    SELECT Name FROM tracks WHERE AlbumId IN (SELECT AlbumId FROM albums WHERE Title = 'Let There Be Rock');
+
+Afficher le prix de cet album ainsi que sa durée totale :
+    SELECT SUM(UnitPrice) FROM tracks WHERE AlbumId IN (SELECT AlbumId FROM albums WHERE Title = 'Let There Be Rock');
+
+    SELECT SUM(Milliseconds) FROM tracks WHERE AlbumId IN (SELECT AlbumId FROM albums WHERE Title = 'Let There Be Rock');
+
+Afficher le coût de l'intégralité de la discographie de "Deep Purple" :
+    SELECT SUM(UnitPrice) FROM tracks
+    JOIN albums ON albums.AlbumId = tracks.AlbumId
+    JOIN artists ON artists.ArtistId = albums.ArtistId
+    WHERE artists.Name = "Deep Purple";
+
+Créer l'album de ton artiste favori en base, en renseignant correctement les trois tables albums, artists et tracks :
+    INSERT INTO artists (name) VALUES ('Mr. Modo');
+    INSERT INTO albums (Title, ArtistId) VALUES ('Modonut', 276);
+    INSERT INTO tracks (Name, UnitPrice, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds) VALUES ('Not Afraid', 0.99, 348, 1, 1, 'Jessica Fitousi', 199836);
+    INSERT INTO tracks (Name, UnitPrice, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds) VALUES ('Jessica', 0.99, 348, 1, 1, 'Jessica Fitousi', 200836);
+

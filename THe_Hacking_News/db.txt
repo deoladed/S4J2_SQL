@@ -1,0 +1,49 @@
+Users :			Lien :								Coment :									Sous_comment : ?
+ID | name		ID | ID_user | url | ID_comment		ID | ID_user | body | ID_first_comment ?	ID | ID_user | ID_comment | body
+
+
+CREATE TABLE `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`name` TEXT);
+
+CREATE TABLE `lien` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`id_user` INTEGER,`url` TEXT,`id_comment` INTEGER);
+
+CREATE TABLE `comment` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`id_user` INTEGER,`body` TEXT,'id_firstcomment' INTEGER);
+
+??????
+CREATE TABLE `sous_comment` (
+`id` INTEGER PRIMARY KEY AUTOINCREMENT,
+`id_user` INTEGER,
+`id_comment` INTEGER,
+`body` TEXT
+);
+
+
+
+
+
+
+
+
+
+
+DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+Récupérer la liste des titres de l'album "Let There Be Rock"
+
+SELECT ProductName
+FROM Products
+WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails WHERE Quantity = 10);
+
+SELECT ProductName
+FROM Products
+WHERE ProductID = ALL (SELECT ProductID FROM OrderDetails WHERE Quantity = 10);
+
+
+SELECT * FROM inhabitants
+JOIN cities ON cities.id = inhabitants.city_id
+WHERE cities.name = 'Paris';
+
+
+
+SELECT column1, column2, column3, ...
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition; 

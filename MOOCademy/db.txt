@@ -1,0 +1,6 @@
+Cours :									Lessons :
+ID | Title | Description				ID | ID_cours | Title | Body
+
+CREATE TABLE `cours` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT, `description` TEXT);
+
+CREATE TABLE `lessons` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT,`id_cours` INTEGER,`title` TEXT,`body` TEXT);

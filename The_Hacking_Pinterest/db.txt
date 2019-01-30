@@ -1,0 +1,8 @@
+User :			Pin :									Coment :
+ID | Name		ID | ID_usuer | url | ID_comment   		ID | ID_user | body
+
+CREATE TABLE `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`name` TEXT);
+
+CREATE TABLE `pin` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`id_user` INTEGER,`url` TEXT,`id_comment` INTEGER);
+
+CREATE TABLE `comment` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `id_user` INTEGER, `body` TEXT);
